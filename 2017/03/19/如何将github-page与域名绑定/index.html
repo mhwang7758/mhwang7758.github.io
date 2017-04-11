@@ -104,7 +104,7 @@
 <meta property="og:image" content="http://on2eediez.bkt.clouddn.com/b2_managerDomain.png">
 <meta property="og:image" content="http://on2eediez.bkt.clouddn.com/b2_openDomainSet.png">
 <meta property="og:image" content="http://on2eediez.bkt.clouddn.com/b2_addDomain.png">
-<meta property="og:updated_time" content="2017-04-11T12:50:26.614Z">
+<meta property="og:updated_time" content="2017-04-11T13:28:05.996Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何将github page与域名绑定">
 <meta name="twitter:description" content="若你不舍得花几十块钱一月买服务器，但是舍得花几十块钱一年买域名的话，可以将github page与自己的域名进行绑定，这样自己的博客就可以取一个高大上的网址了。
@@ -373,17 +373,22 @@
 <p>上一篇文章说了如何创建自己的博客，详情可见<a href="http://mhwang7758.com/2017/03/19/三步建立自己博客/"><strong>三步建立自己的博客</strong></a>，这次我来介绍如何把<code>github</code>的博客跟自己申请的域名进行绑定，让你拥有自己个性名称的个人网站。</p>
 <h3 id="申请域名"><a href="#申请域名" class="headerlink" title="申请域名"></a>申请域名</h3><p>这一步比较简单，建议用<a href="https://sg.godaddy.com/" target="_blank" rel="external"><strong>godday</strong></a>的域名，省去备案的麻烦。如何申请可百度或谷歌。</p>
 <h3 id="创建网址配置文件"><a href="#创建网址配置文件" class="headerlink" title="创建网址配置文件"></a>创建网址配置文件</h3><p>方法一：在站点<code>source</code>目录下面，新建一个名为CNAME的文件，里面只写入你要绑定的域名，比如<code>mhwang7758.com</code>（注意，这里为了方便很多人开始的时是创建文本文件.txt，输入完成后一定要记得把后缀名.txt去掉，不然访问不了的）<br>方法二：在创建<code>Repository</code>的根目录下面，新建一个名为CNAME的文本文件，里面写入你要绑定的域名，比如<code>mhwang7758.com</code>。</p>
-<h3 id="DNS配置"><a href="#DNS配置" class="headerlink" title="DNS配置"></a>DNS配置</h3><p>申请域名后需要把域名和<code>github</code>的ip地址映射起来，这样访问域名的时候就能跳转到github页面。<br>首先是获取<code>github</code>的ip地址，可以用ping命令获取。打开cmd命令，输入ping 你的<code>github名+github.io</code>。如图1：<br><img src="http://on2eediez.bkt.clouddn.com/b2_getGitHubIp.png" alt="ic_1"></p>
+<h3 id="DNS配置"><a href="#DNS配置" class="headerlink" title="DNS配置"></a>DNS配置</h3><p>申请域名后需要把域名和<code>github</code>的ip地址映射起来，这样访问域名的时候就能跳转到<code>github</code>页面。首先是获取<code>github</code>的ip地址，可以用ping命令获取。打开cmd命令，输入ping 你的<code>github名+github.io</code>。如图1：<br><img src="http://on2eediez.bkt.clouddn.com/b2_getGitHubIp.png" alt="ic_1"></p>
 <center>图 1. 获取github ip地址</center>
 
-<p>获取ip后，建议使用DNSpod来进行域名的绑定，注册后，添加<code>github</code>的域名和Ip地址，如图2：<br><img src="http://on2eediez.bkt.clouddn.com/b2_setDNS.png" alt="ic_2"></p>
-<center>图 2. 往DNSpod添加域名和地址</center><br>图中记录类型为A的记录值改为你自己上一步获取到的ip地址，主机记录为www开头的填写自己<code>github</code>页面的域名，如<code>mhwang7758.github.io.</code>，io后面的<code>.</code>应该不加也可以，暂时没试过,有兴趣的可以试下。<br><br>### 修改<code>Godaddy</code>的DNS地址<br>以上步骤准备好后，打开<a href="https://sg.godaddy.com/" target="_blank" rel="external"><strong>goddady官网</strong></a>,在左上角选择简体中文的语言，登陆成功后点击右上角的用户名，在弹出的窗口中选择<code>管理域名</code>,如图3:<br><img src="http://on2eediez.bkt.clouddn.com/b2_managerDomain.png" alt="ic_3"><br><center>图 3. 选择管理域名</center>
+<p>获取ip后，建议使用<a href="https://dnspod.qcloud.com/?fromSource=gwzcw.91747.91747.91747" target="_blank" rel="external"><strong>DNSpod</strong></a>来进行域名的绑定，注册后，添加<code>github</code>的域名和Ip地址，如图2：<br><img src="http://on2eediez.bkt.clouddn.com/b2_setDNS.png" alt="ic_2"></p>
+<center>图 2. 往DNSpod添加域名和地址</center>
+
+<p>图中记录类型为A的记录值改为你自己上一步获取到的ip地址，主机记录为www开头的填写自己<code>github</code>页面的域名，如<code>mhwang7758.github.io.</code>，io后面的<code>.</code>应该不加也可以，暂时没试过,有兴趣的可以试下。</p>
+<h3 id="修改Godaddy的DNS地址"><a href="#修改Godaddy的DNS地址" class="headerlink" title="修改Godaddy的DNS地址"></a>修改<code>Godaddy</code>的DNS地址</h3><p>以上步骤准备好后，打开<a href="https://sg.godaddy.com/" target="_blank" rel="external"><strong>goddady官网</strong></a>,在左上角选择简体中文的语言，登陆成功后点击右上角的用户名，在弹出的窗口中选择<code>管理域名</code>,如图3:<br><img src="http://on2eediez.bkt.clouddn.com/b2_managerDomain.png" alt="ic_3"></p>
+<center>图 3. 选择管理域名</center>
 
 <p>在弹出的窗口中找到自己申请的域名，然后点击域名旁边的小三角按钮，在弹出的对话框中选择<code>设置域名服务器</code>选项，如图4：<br><img src="http://on2eediez.bkt.clouddn.com/b2_openDomainSet.png" alt="ic_4"></p>
 <center>图 4. 设置域名服务器</center>
 
 <p>之后在弹出的窗口中选择第二项<code>定制</code>,然后点击添加域名服务器，输入如图4的字段即可:<br><img src="http://on2eediez.bkt.clouddn.com/b2_addDomain.png" alt="ic_5"></p>
 <center>图 5. 选择域名服务器</center>
+
 
 <p>如果一切顺利的话，恭喜你，赶紧输入自己的域名看看效果吧！</p>
 
@@ -575,7 +580,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#申请域名"><span class="nav-number">1.</span> <span class="nav-text">申请域名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建网址配置文件"><span class="nav-number">2.</span> <span class="nav-text">创建网址配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DNS配置"><span class="nav-number">3.</span> <span class="nav-text">DNS配置</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#申请域名"><span class="nav-number">1.</span> <span class="nav-text">申请域名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建网址配置文件"><span class="nav-number">2.</span> <span class="nav-text">创建网址配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DNS配置"><span class="nav-number">3.</span> <span class="nav-text">DNS配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改Godaddy的DNS地址"><span class="nav-number">4.</span> <span class="nav-text">修改Godaddy的DNS地址</span></a></li></ol></div>
             
 
           </div>
