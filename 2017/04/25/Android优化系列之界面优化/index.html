@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Android,优化," />
 
 
 
@@ -87,33 +87,26 @@
 
 
 
-<meta name="description" content="心里有无数idea在飘无法表达？学了新技能成就满满想装逼却无人知道？想搭博客又被高昂的服务器费用吓退？看完这篇文章，只需要三步，手把手教你免费拥有自己的博客。
+<meta name="description" content="不想写那么多说废话了，直接开始。
 
-拥有github账号和安装git这一步比较简单，这里就不详细叙述，github账号直接官网注册，git直接下载后一路安装就可以。实在不懂可以参考我的CSDN博客里的文章。
-安装node.js和Hexo打开node.js的官网下载node">
+为什么要优化界面Android设备的屏幕刷新频率一般是60帧每秒（那么每帧的时间=1/60fps=16.6ms），因此系统会每隔16ms发出VSYNC信号，触发对UI的渲染动作，这就要求我们必须在16ms内完成一幅画面，以跟系统同步。如果我们的一幅画面需要20ms才能渲染完成，那么剩下的绘制工作只能等到下一个VSYNC信号发出时才能完成，即这个UI需要两个VS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="三步建立自己的博客">
-<meta property="og:url" content="http://mhwang7758.com/2017/03/19/三步建立自己博客/index.html">
+<meta property="og:title" content="（一）Android优化系列之界面优化">
+<meta property="og:url" content="http://mhwang7758.com/2017/04/25/Android优化系列之界面优化/index.html">
 <meta property="og:site_name" content="王明海的个人博客">
-<meta property="og:description" content="心里有无数idea在飘无法表达？学了新技能成就满满想装逼却无人知道？想搭博客又被高昂的服务器费用吓退？看完这篇文章，只需要三步，手把手教你免费拥有自己的博客。
+<meta property="og:description" content="不想写那么多说废话了，直接开始。
 
-拥有github账号和安装git这一步比较简单，这里就不详细叙述，github账号直接官网注册，git直接下载后一路安装就可以。实在不懂可以参考我的CSDN博客里的文章。
-安装node.js和Hexo打开node.js的官网下载node">
-<meta property="og:image" content="http://on2eediez.bkt.clouddn.com/three_step_ic_1.png">
-<meta property="og:image" content="http://on2eediez.bkt.clouddn.com/three_step_ic_2.png">
-<meta property="og:image" content="http://on2eediez.bkt.clouddn.com/three_step_ic_3.png">
-<meta property="og:image" content="http://on2eediez.bkt.clouddn.com/three_step_ic_4.png">
-<meta property="og:image" content="http://on2eediez.bkt.clouddn.com/three_step_ic_5.png">
-<meta property="og:image" content="http://on2eediez.bkt.clouddn.com/three_step_ic_6.png">
-<meta property="og:image" content="http://on2eediez.bkt.clouddn.com/three_step_ic_7.png">
-<meta property="og:updated_time" content="2017-04-27T23:20:41.324Z">
+为什么要优化界面Android设备的屏幕刷新频率一般是60帧每秒（那么每帧的时间=1/60fps=16.6ms），因此系统会每隔16ms发出VSYNC信号，触发对UI的渲染动作，这就要求我们必须在16ms内完成一幅画面，以跟系统同步。如果我们的一幅画面需要20ms才能渲染完成，那么剩下的绘制工作只能等到下一个VSYNC信号发出时才能完成，即这个UI需要两个VS">
+<meta property="og:image" content="http://on2eediez.bkt.clouddn.com/b3_overDraw.png">
+<meta property="og:image" content="http://on2eediez.bkt.clouddn.com/b3_drawerLayout1.png">
+<meta property="og:image" content="http://on2eediez.bkt.clouddn.com/b3_drawerLayout2.png">
+<meta property="og:updated_time" content="2017-05-10T00:04:11.668Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="三步建立自己的博客">
-<meta name="twitter:description" content="心里有无数idea在飘无法表达？学了新技能成就满满想装逼却无人知道？想搭博客又被高昂的服务器费用吓退？看完这篇文章，只需要三步，手把手教你免费拥有自己的博客。
+<meta name="twitter:title" content="（一）Android优化系列之界面优化">
+<meta name="twitter:description" content="不想写那么多说废话了，直接开始。
 
-拥有github账号和安装git这一步比较简单，这里就不详细叙述，github账号直接官网注册，git直接下载后一路安装就可以。实在不懂可以参考我的CSDN博客里的文章。
-安装node.js和Hexo打开node.js的官网下载node">
-<meta name="twitter:image" content="http://on2eediez.bkt.clouddn.com/three_step_ic_1.png">
+为什么要优化界面Android设备的屏幕刷新频率一般是60帧每秒（那么每帧的时间=1/60fps=16.6ms），因此系统会每隔16ms发出VSYNC信号，触发对UI的渲染动作，这就要求我们必须在16ms内完成一幅画面，以跟系统同步。如果我们的一幅画面需要20ms才能渲染完成，那么剩下的绘制工作只能等到下一个VSYNC信号发出时才能完成，即这个UI需要两个VS">
+<meta name="twitter:image" content="http://on2eediez.bkt.clouddn.com/b3_overDraw.png">
 
 
 
@@ -141,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://mhwang7758.com/2017/03/19/三步建立自己博客/"/>
+  <link rel="canonical" href="http://mhwang7758.com/2017/04/25/Android优化系列之界面优化/"/>
 
 
 
 
 
-  <title> 三步建立自己的博客 | 王明海的个人博客 </title>
+  <title> （一）Android优化系列之界面优化 | 王明海的个人博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -285,8 +278,8 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://mhwang7758.com/2017/03/19/三步建立自己博客/">
+  <article class="post post-type-tags " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://mhwang7758.com/2017/04/25/Android优化系列之界面优化/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="王明海">
@@ -307,7 +300,7 @@
             
             
               
-                三步建立自己的博客
+                （一）Android优化系列之界面优化
               
             
           </h1>
@@ -322,8 +315,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-19T11:30:57+08:00">
-                2017-03-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-25T07:15:13+08:00">
+                2017-04-25
               </time>
             
 
@@ -333,6 +326,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -341,8 +356,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/03/19/三步建立自己博客/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/19/三步建立自己博客/" itemprop="commentCount"></span>
+                <a href="/2017/04/25/Android优化系列之界面优化/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/25/Android优化系列之界面优化/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -350,7 +365,7 @@
 
           
           
-             <span id="/2017/03/19/三步建立自己博客/" class="leancloud_visitors" data-flag-title="三步建立自己的博客">
+             <span id="/2017/04/25/Android优化系列之界面优化/" class="leancloud_visitors" data-flag-title="（一）Android优化系列之界面优化">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -380,95 +395,22 @@
 
       
         <blockquote>
-<p>心里有无数idea在飘无法表达？学了新技能成就满满想装逼却无人知道？想搭博客又被高昂的服务器费用吓退？看完这篇文章，只需要三步，手把手教你免费拥有自己的博客。</p>
+<p>不想写那么多说废话了，直接开始。</p>
 </blockquote>
-<h3 id="拥有github账号和安装git"><a href="#拥有github账号和安装git" class="headerlink" title="拥有github账号和安装git"></a>拥有github账号和安装git</h3><p>这一步比较简单，这里就不详细叙述，github账号直接官网注册，git直接下载后一路安装就可以。实在不懂可以参考<a href="http://blog.csdn.net/u013564742/article/details/52771740" target="_blank" rel="external"><strong>我的CSDN博客</strong></a>里的文章。</p>
-<h3 id="安装node-js和Hexo"><a href="#安装node-js和Hexo" class="headerlink" title="安装node.js和Hexo"></a>安装node.js和Hexo</h3><p>打开<strong><em>node.js</em></strong>的<a href="https://nodejs.org/en/" target="_blank" rel="external"><strong>官网</strong></a>下载<strong><em>node.js</em></strong>安装包（打开页面后如图1），虽然推荐大部分用户使用V6.10.0版本，但是谁让我喜欢尝鲜呢？于是我下载了V7.7.1版本的。下载过程比较慢，经常有时下着下着就断了，不知道是因为我网速慢还是被墙的原因，总之我下载这个几M的安装包花了我差不多两个小时。<br>下载完成后直接打开，下一步安装就可以了。<br><img src="http://on2eediez.bkt.clouddn.com/three_step_ic_1.png" alt="ic_1"></p>
-<center>图 1. 下载node.js</center><br>安装好<strong><em>Node.js</em></strong>后，打开<strong><em>gitBash</em></strong>，在里面输入<code>npm install -g hexo-cli</code>命令即可安装hexo，安装成功后最末尾会出<code>highlight_alias.json</code>英文字样（如图2）。<br><img src="http://on2eediez.bkt.clouddn.com/three_step_ic_2.png" alt="ic_2"><br><center>图 2. 安装hexo成功</center>
-
-<h3 id="部署博客"><a href="#部署博客" class="headerlink" title="部署博客"></a>部署博客</h3><ul>
-<li>创建博客文件夹<br>成功安装后，进入你喜欢的文件地方（这里以F盘为例），新建一个文件夹，如<strong><em>githubBlog</em></strong>，然后双击进入，右键选择<code>git bash here</code>打开<strong><em>git bash</em></strong>，然后输入命令<code>hexo init blog</code>或<code>hexo init</code>（前者blog为博客生成特定名称，若不加则会使用默认），之后<strong><em>git</em></strong>会自动下载相应的文件及默认的博客模板，完成后会出现<strong><em>start blogging with Hexo</em></strong>英文字样，如图3：<br><img src="http://on2eediez.bkt.clouddn.com/three_step_ic_3.png" alt="ic_3"><br><center>图 3. 初始化博客成功</center><br>成功提示后，新建的文件夹下会自动生成blog文件夹，如图4所示：</li>
+<h3 id="为什么要优化界面"><a href="#为什么要优化界面" class="headerlink" title="为什么要优化界面"></a>为什么要优化界面</h3><p>Android设备的屏幕刷新频率一般是60帧每秒（那么每帧的时间=1/60fps=16.6ms），因此系统会每隔16ms发出VSYNC信号，触发对UI的渲染动作，这就要求我们必须在16ms内完成一幅画面，以跟系统同步。如果我们的一幅画面需要20ms才能渲染完成，那么剩下的绘制工作只能等到下一个VSYNC信号发出时才能完成，即这个UI需要两个VSYNC信号，因此在32ms内界面还是停留在同一幅画面，这就是卡顿。</p>
+<h3 id="有什么优化方法"><a href="#有什么优化方法" class="headerlink" title="有什么优化方法"></a>有什么优化方法</h3><ul>
+<li>减少界面过度绘制<br>过度绘制意思是指屏幕上某个像素在同一帧时间内被绘制了多次，比如一些不可见的界面也绘制，造成系统绘制负担过重，出现卡顿。比较典型的有以下几点：</li>
 </ul>
-<p><img src="http://on2eediez.bkt.clouddn.com/three_step_ic_4.png" alt="ic_4"></p>
-<center>图 4. 生成的博客截图</center>
-
-<p>生成的博客文件夹下有个<strong>_config.yml</strong>文件，用来专门配置博客的一些属性，属性的作用如下所示：</p>
-<pre><code>
-#Hexo Configuration
-##Docs: https://hexo.io/docs/configuration.html
-##Source: https://github.com/hexojs/hexo/
-#Site
-title: #标题
-subtitle: #副标题
-description: #站点描述，给搜索引擎看的
-author: 
-email: 邮箱
-language: zh-CN
-timezone: Asia/ShangHai
-#URL
-##If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://mhwang7758
-root: /
-permalink: :year/:month/:day/:title/ #文章的链接格式
-permalink_defaults:
-#Directory
-source_dir: source     
-public_dir: public #生成的网页文件目录
-tag_dir: tags  #标签目录
-archive_dir: archives  #存档目录
-category_dir: categories #分类目录
-code_dir: downloads/code
-i18n_dir: :lang
-skip_render:
-#Writing
-new_post_name: :title.md # File name of new posts #新文章标题
-default_layout: post #默认的模板，包括 post、page、photo、draft（文章、页面、照片、草稿）
-titlecase: false # Transform title into titlecase #标题转换成大写
-external_link: true # Open external links in new tab #在新选项卡中打开连接
-filename_case: 0
-render_drafts: false
-post_asset_folder: false
-relative_link: false
-future: true
-highlight:
-  enable: true
-  line_number: true #显示行号
-  auto_detect: false
-  tab_replace:
-#Category & Tag
-default_category: uncategorized
-category_map:
-tag_map:
-#Date / Time format
-##Hexo uses Moment.js to parse and display date
-##You can customize the date format as defined in
-##http://momentjs.com/docs/#/displaying/format/
-date_format: YYYY-MM-DD
-time_format: HH:mm:ss
-#Pagination
-##Set per_page to 0 to disable pagination
-per_page: 10
-pagination_dir: page
-#Extensions
-##Plugins: https://hexo.io/plugins/
-##Themes: https://hexo.io/themes/
-theme: next #主题
-#Deployment
-##Docs: https://hexo.io/docs/deployment.html
-deploy:
-  type: git
-  repo: 创建的git仓库地址
-  branch: master
-</code></pre>
-
+<p>a. 重叠背景<br>例如某个Activity有一个背景，里面的Layout又有自己的背景，包括更多嵌套在里面的View也有背景，这就造成了背景重叠，而重叠部分还绘制。<br>对于这类问题，可以通过手机设置里的开发者选项，打开”调试GPU过度绘制”(每个手机可能名称不一样，这里以魅族的为例)，然后打开自己的app，即可以观察UI上的过度绘制情况。如下图：<br><img src="http://on2eediez.bkt.clouddn.com/b3_overDraw.png" alt="ic_1"></p>
+<p><center>图 1. GPU过度绘制情况</center><br>上图中，蓝色，淡绿，淡红，深红代表了4种不同程度的过度绘制情况，在开发中应该尽量减少红色Overdraw，看到更多的蓝色区域。</p>
+<p>b. 自定义view<br>我们知道，非可见的UI组件进行绘制更新会导致过度绘制，Android系统虽然通过避免绘制那些设定为不可见的组件，但是一些自定义View如果重写了onDraw方法，系统是无法监控其是否可见并优化的，这样就无法避免过度绘制了。如下图的自定义的抽屉布局，当其隐藏时，系统还是会对其所占的区域进行绘制。<br><img src="http://on2eediez.bkt.clouddn.com/b3_drawerLayout1.png" alt="ic_2"><br><img src="http://on2eediez.bkt.clouddn.com/b3_drawerLayout2.png" alt="ic_3"></p>
+<p><center>图 2. 自定义抽屉布局</center><br>对于这种情况，我们可以通过canvas.clipRect方法来帮助系统识别其应该绘制的区域，这个方法可以指定一块矩形区域，只有在这个区域内的自定义View才会被绘制，其他区域则忽视，这样，当布局向左边隐藏时，由于不在区域内，也就不用绘制了。</p>
 <ul>
-<li><p>查看博客初形<br>按照网上的很多教程，完成这一步后输入<code>hexo generate</code>和<code>hexo server</code>这两个命令后就可以打开<code>http://localhost:4000</code>看网页了。然而事实是残酷的，当输入<code>hexo server</code>回车后会提示没有这个命令！<br>这是因为由于版本问题，Hexo 3.0 后server被单独出来了，需要安装server，命令为<code>npm install hexo -server --save</code>（注意需要在博客目录下打开git bash），如图5：<br><img src="http://on2eediez.bkt.clouddn.com/three_step_ic_5.png" alt="ic_5"></p>
-<center>图 5. 安装server</center><br>看见有start processing后之后 就可以打<code>http://localhost:4000</code>查看博客初形了，如图6：<br><img src="http://on2eediez.bkt.clouddn.com/three_step_ic_6.png" alt="ic_6"><br><center>图 6. 博客初形</center>
+<li><p>使用ViewStub标签<br>我们平时经常会遇到这样的需求，在程序运行时根据条件来决定显示/隐藏哪个组件；通常的做法是会在布局文件中将暂时不需要的组件设置为不可见，然后在代码中根据条件去判断是否显示。但实际情况是有可能用户根本不会去触发它。这时就造成了不可见组件的浪费。<br>这时建议使用ViewStub标签，ViewStub是一个只在运行时加载布局资源、不可见且宽高为0的View88888，在布局文件中使用它只是用于占位，在代码中没有手动加载它时，并不会影响界面的测量、绘制等操作。在代码中通过inflate加载ViewStub时，ViewStub会用在布局文件中为其指定的布局文件来代替它自身，并不会消耗其他资源。</p>
 </li>
-<li><p>将博客与<strong><em>github page</em></strong>绑定<br>接着登陆<a href="https://github.com/" target="_blank" rel="external"><strong>github官网</strong></a>，点右上角的<strong><em>create new respository</em></strong>，在<strong><em>repository name</em></strong>一栏填上你的<code>github名+“.”+github.io</code>，如<code>xxx.github.io</code>（注意你的名字与github之间有“.”）。如图7：<br><img src="http://on2eediez.bkt.clouddn.com/three_step_ic_7.png" alt="ic_7"><br><center>图 7. 创建Repository</center><br>一切就绪后，按照网上的一些教程，文章写好后直接<code>hexo deploy</code>即可，但是会发现又找不到命令。但是如果你上网搜，大部分答案会告诉你输入<code>npm install hexo-deployer-git --save</code>命令，或者将里的type中的github改成git，最后你都试了还是然并卵，最新的版本应该是输入<code>npm install --save hexo-deployer-git</code>（–save到前面来了）。</p>
+<li><p>使用include标签<br>当多个控件在多个界面需要使用且样式到时，可考虑将其独立出来，然后使用<include>标签将其使用到需要使用的布局中，如底部菜单等。</include></p>
 </li>
 </ul>
-<p>如果到了这里，恭喜你你已经创建了自己的<strong><em>个人博客</em></strong>，接下来请尽情喷洒你的灵感与创意吧！</p>
 
       
     </div>
@@ -511,6 +453,14 @@ deploy:
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+            <a href="/tags/优化/" rel="tag"># 优化</a>
+          
+        </div>
+      
 
       
         
@@ -520,15 +470,15 @@ deploy:
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/04/07/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/03/19/如何将github-page与域名绑定/" rel="prev" title="如何将github page与域名绑定">
-                如何将github page与域名绑定 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -554,8 +504,8 @@ deploy:
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/03/19/三步建立自己博客/"
-           data-title="三步建立自己的博客" data-url="http://mhwang7758.com/2017/03/19/三步建立自己博客/">
+      <div class="ds-thread" data-thread-key="2017/04/25/Android优化系列之界面优化/"
+           data-title="（一）Android优化系列之界面优化" data-url="http://mhwang7758.com/2017/04/25/Android优化系列之界面优化/">
       </div>
     
   </div>
@@ -672,7 +622,7 @@ deploy:
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#拥有github账号和安装git"><span class="nav-number">1.</span> <span class="nav-text">拥有github账号和安装git</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装node-js和Hexo"><span class="nav-number">2.</span> <span class="nav-text">安装node.js和Hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#部署博客"><span class="nav-number">3.</span> <span class="nav-text">部署博客</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么要优化界面"><span class="nav-number">1.</span> <span class="nav-text">为什么要优化界面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有什么优化方法"><span class="nav-number">2.</span> <span class="nav-text">有什么优化方法</span></a></li></ol></div>
             
 
           </div>
