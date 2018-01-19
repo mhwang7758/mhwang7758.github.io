@@ -87,15 +87,15 @@
 
 
 
-<meta name="description" content="博客">
+<meta name="description" content="茫茫人海中遇见最好的你！">
 <meta property="og:type" content="website">
-<meta property="og:title" content="王明海的个人博客">
+<meta property="og:title" content="疯一样的雨博客">
 <meta property="og:url" content="http://mhwang7758.com/index.html">
-<meta property="og:site_name" content="王明海的个人博客">
-<meta property="og:description" content="博客">
+<meta property="og:site_name" content="疯一样的雨博客">
+<meta property="og:description" content="茫茫人海中遇见最好的你！">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="王明海的个人博客">
-<meta name="twitter:description" content="博客">
+<meta name="twitter:title" content="疯一样的雨博客">
+<meta name="twitter:description" content="茫茫人海中遇见最好的你！">
 
 
 
@@ -129,7 +129,7 @@
 
 
 
-  <title> 王明海的个人博客 </title>
+  <title> 疯一样的雨博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -177,7 +177,7 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">王明海的个人博客</span>
+        <span class="site-title">疯一样的雨博客</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -218,6 +218,16 @@
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
             分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -273,13 +283,13 @@
     <link itemprop="mainEntityOfPage" href="http://mhwang7758.com/2017/04/25/Android优化系列之界面优化/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="王明海">
+      <meta itemprop="name" content="疯一样的雨">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/uploads/avatar.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王明海的个人博客">
+      <meta itemprop="name" content="疯一样的雨博客">
     </span>
 
     
@@ -389,26 +399,16 @@
 
       
         
-          
-            <blockquote>
+          <blockquote>
 <p>不想写那么多说废话了，直接开始。</p>
 </blockquote>
-<h3 id="为什么要优化界面"><a href="#为什么要优化界面" class="headerlink" title="为什么要优化界面"></a>为什么要优化界面</h3><p>Android设备的屏幕刷新频率一般是60帧每秒（那么每帧的时间=1/60fps=16.6ms），因此系统会每隔16ms发出VSYNC信号，触发对UI的渲染动作，这就要求我们必须在16ms内完成一幅画面，以跟系统同步。如果我们的一幅画面需要20ms才能渲染完成，那么剩下的绘制工作只能等到下一个VSYNC信号发出时才能完成，即这个UI需要两个VSYNC信号，因此在32ms内界面还是停留在同一幅画面，这就是卡顿。</p>
-<h3 id="有什么优化方法"><a href="#有什么优化方法" class="headerlink" title="有什么优化方法"></a>有什么优化方法</h3><ul>
-<li>减少界面过度绘制<br>过度绘制意思是指屏幕上某个像素在同一帧时间内被绘制了多次，比如一些不可见的界面也绘制，造成系统绘制负担过重，出现卡顿。比较典型的有以下几点：</li>
-</ul>
-<p>a. 重叠背景<br>例如某个Activity有一个背景，里面的Layout又有自己的背景，包括更多嵌套在里面的View也有背景，这就造成了背景重叠，而重叠部分还绘制。<br>对于这类问题，可以通过手机设置里的开发者选项，打开”调试GPU过度绘制”(每个手机可能名称不一样，这里以魅族的为例)，然后打开自己的app，即可以观察UI上的过度绘制情况。如下图：<br><img src="http://on2eediez.bkt.clouddn.com/b3_overDraw.png" alt="ic_1"></p>
-<p><center>图 1. GPU过度绘制情况</center><br>上图中，蓝色，淡绿，淡红，深红代表了4种不同程度的过度绘制情况，在开发中应该尽量减少红色Overdraw，看到更多的蓝色区域。</p>
-<p>b. 自定义view<br>我们知道，非可见的UI组件进行绘制更新会导致过度绘制，Android系统虽然通过避免绘制那些设定为不可见的组件，但是一些自定义View如果重写了onDraw方法，系统是无法监控其是否可见并优化的，这样就无法避免过度绘制了。如下图的自定义的抽屉布局，当其隐藏时，系统还是会对其所占的区域进行绘制。<br><img src="http://on2eediez.bkt.clouddn.com/b3_drawerLayout1.png" alt="ic_2"><br><img src="http://on2eediez.bkt.clouddn.com/b3_drawerLayout2.png" alt="ic_3"></p>
-<p><center>图 2. 自定义抽屉布局</center><br>对于这种情况，我们可以通过canvas.clipRect方法来帮助系统识别其应该绘制的区域，这个方法可以指定一块矩形区域，只有在这个区域内的自定义View才会被绘制，其他区域则忽视，这样，当布局向左边隐藏时，由于不在区域内，也就不用绘制了。</p>
-<ul>
-<li><p>使用ViewStub标签<br>我们平时经常会遇到这样的需求，在程序运行时根据条件来决定显示/隐藏哪个组件；通常的做法是会在布局文件中将暂时不需要的组件设置为不可见，然后在代码中根据条件去判断是否显示。但实际情况是有可能用户根本不会去触发它。这时就造成了不可见组件的浪费。<br>这时建议使用ViewStub标签，ViewStub是一个只在运行时加载布局资源、不可见且宽高为0的View88888，在布局文件中使用它只是用于占位，在代码中没有手动加载它时，并不会影响界面的测量、绘制等操作。在代码中通过inflate加载ViewStub时，ViewStub会用在布局文件中为其指定的布局文件来代替它自身，并不会消耗其他资源。</p>
-</li>
-<li><p>使用include标签<br>当多个控件在多个界面需要使用且样式到时，可考虑将其独立出来，然后使用<include>标签将其使用到需要使用的布局中，如底部菜单等。</include></p>
-</li>
-</ul>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/04/25/Android优化系列之界面优化/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -450,13 +450,13 @@
     <link itemprop="mainEntityOfPage" href="http://mhwang7758.com/2017/04/07/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="王明海">
+      <meta itemprop="name" content="疯一样的雨">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/uploads/avatar.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王明海的个人博客">
+      <meta itemprop="name" content="疯一样的雨博客">
     </span>
 
     
@@ -544,18 +544,14 @@
 
       
         
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-          
+          <p>博客搭建的成功后自动生成的第一篇文章.</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/04/07/hello-world/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -597,13 +593,13 @@
     <link itemprop="mainEntityOfPage" href="http://mhwang7758.com/2017/03/19/如何将github-page与域名绑定/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="王明海">
+      <meta itemprop="name" content="疯一样的雨">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/uploads/avatar.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王明海的个人博客">
+      <meta itemprop="name" content="疯一样的雨博客">
     </span>
 
     
@@ -691,33 +687,16 @@
 
       
         
-          
-            <blockquote>
+          <blockquote>
 <p>若你不舍得花几十块钱一月买服务器，但是舍得花几十块钱一年买域名的话，可以将<strong><em>github page</em></strong>与自己的域名进行绑定，这样自己的博客就可以取一个高大上的网址了。</p>
 </blockquote>
-<p>上一篇文章说了如何创建自己的博客，详情可见<a href="http://mhwang7758.com/2017/03/19/三步建立自己博客/"><strong>三步建立自己的博客</strong></a>，这次我来介绍如何把<code>github</code>的博客跟自己申请的域名进行绑定，让你拥有自己个性名称的个人网站。</p>
-<h3 id="申请域名"><a href="#申请域名" class="headerlink" title="申请域名"></a>申请域名</h3><p>这一步比较简单，建议用<a href="https://sg.godaddy.com/" target="_blank" rel="external"><strong>godday</strong></a>的域名，省去备案的麻烦。至于如何申请可百度或谷歌。</p>
-<h3 id="创建网址配置文件"><a href="#创建网址配置文件" class="headerlink" title="创建网址配置文件"></a>创建网址配置文件</h3><p>方法一：在站点<code>source</code>目录下面，新建一个名为CNAME的文件，里面只写入你要绑定的域名，比如<code>mhwang7758.com</code>（注意，这里为了方便很多人开始的时是创建文本文件.txt，输入完成后一定要记得把后缀名.txt去掉，不然访问不了的）<br>方法二：在创建<code>Repository</code>的根目录下面，新建一个名为CNAME的文本文件，里面写入你要绑定的域名，比如<code>mhwang7758.com</code>。</p>
-<h3 id="DNS配置"><a href="#DNS配置" class="headerlink" title="DNS配置"></a>DNS配置</h3><p>申请域名后需要把域名和<code>github</code>的ip地址映射起来，这样访问域名的时候就能跳转到<code>github</code>页面。首先是获取<code>github</code>的ip地址，可以用ping命令获取。打开cmd命令，输入ping 你的<code>github名+github.io</code>。如图1：<br><img src="http://on2eediez.bkt.clouddn.com/b2_getGitHubIp.png" alt="ic_1"></p>
-<center>图 1. 获取github ip地址</center>
-
-<p>获取ip后，建议使用<a href="https://dnspod.qcloud.com/?fromSource=gwzcw.91747.91747.91747" target="_blank" rel="external"><strong>DNSpod</strong></a>来进行域名的绑定，注册后，添加<code>github</code>的域名和Ip地址，如图2：<br><img src="http://on2eediez.bkt.clouddn.com/b2_setDNS.png" alt="ic_2"></p>
-<center>图 2. 往DNSpod添加域名和地址</center>
-
-<p>图中记录类型为A的记录值改为你自己上一步获取到的ip地址，主机记录为www开头的填写自己<code>github</code>页面的域名，如<code>mhwang7758.github.io.</code>，io后面的<code>.</code>应该不加也可以，暂时没试过,有兴趣的可以试下。</p>
-<h3 id="修改Godaddy的DNS地址"><a href="#修改Godaddy的DNS地址" class="headerlink" title="修改Godaddy的DNS地址"></a>修改<code>Godaddy</code>的DNS地址</h3><p>以上步骤准备好后，打开<a href="https://sg.godaddy.com/" target="_blank" rel="external"><strong>goddady官网</strong></a>,在左上角选择简体中文的语言，登陆成功后点击右上角的用户名，在弹出的窗口中选择<code>管理域名</code>,如图3:<br><img src="http://on2eediez.bkt.clouddn.com/b2_managerDomain.png" alt="ic_3"></p>
-<center>图 3. 选择管理域名</center>
-
-<p>在弹出的窗口中找到自己申请的域名，然后点击域名旁边的小三角按钮，在弹出的对话框中选择<code>设置域名服务器</code>选项，如图4：<br><img src="http://on2eediez.bkt.clouddn.com/b2_openDomainSet.png" alt="ic_4"></p>
-<center>图 4. 设置域名服务器</center>
-
-<p>之后在弹出的窗口中选择第二项<code>定制</code>,然后点击添加域名服务器，输入如图4的字段即可:<br><img src="http://on2eediez.bkt.clouddn.com/b2_addDomain.png" alt="ic_5"></p>
-<center>图 5. 选择域名服务器</center>
-
-
-<p>如果一切顺利的话，恭喜你，赶紧输入自己的域名看看效果吧！</p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/03/19/如何将github-page与域名绑定/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -759,13 +738,13 @@
     <link itemprop="mainEntityOfPage" href="http://mhwang7758.com/2017/03/19/三步建立自己博客/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="王明海">
+      <meta itemprop="name" content="疯一样的雨">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/uploads/avatar.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王明海的个人博客">
+      <meta itemprop="name" content="疯一样的雨博客">
     </span>
 
     
@@ -857,6 +836,7 @@
             <blockquote>
 <p>心里有无数idea在飘无法表达？学了新技能成就满满想装逼却无人知道？想搭博客又被高昂的服务器费用吓退？看完这篇文章，只需要三步，手把手教你免费拥有自己的博客。</p>
 </blockquote>
+<!-- move -->
 <h3 id="拥有github账号和安装git"><a href="#拥有github账号和安装git" class="headerlink" title="拥有github账号和安装git"></a>拥有github账号和安装git</h3><p>这一步比较简单，这里就不详细叙述，github账号直接官网注册，git直接下载后一路安装就可以。实在不懂可以参考<a href="http://blog.csdn.net/u013564742/article/details/52771740" target="_blank" rel="external"><strong>我的CSDN博客</strong></a>里的文章。</p>
 <h3 id="安装node-js和Hexo"><a href="#安装node-js和Hexo" class="headerlink" title="安装node.js和Hexo"></a>安装node.js和Hexo</h3><p>打开<strong><em>node.js</em></strong>的<a href="https://nodejs.org/en/" target="_blank" rel="external"><strong>官网</strong></a>下载<strong><em>node.js</em></strong>安装包（打开页面后如图1），虽然推荐大部分用户使用V6.10.0版本，但是谁让我喜欢尝鲜呢？于是我下载了V7.7.1版本的。下载过程比较慢，经常有时下着下着就断了，不知道是因为我网速慢还是被墙的原因，总之我下载这个几M的安装包花了我差不多两个小时。<br>下载完成后直接打开，下一步安装就可以了。<br><img src="http://on2eediez.bkt.clouddn.com/three_step_ic_1.png" alt="ic_1"></p>
 <center>图 1. 下载node.js</center><br>安装好<strong><em>Node.js</em></strong>后，打开<strong><em>gitBash</em></strong>，在里面输入<code>npm install -g hexo-cli</code>命令即可安装hexo，安装成功后最末尾会出<code>highlight_alias.json</code>英文字样（如图2）。<br><img src="http://on2eediez.bkt.clouddn.com/three_step_ic_2.png" alt="ic_2"><br><center>图 2. 安装hexo成功</center>
@@ -1008,11 +988,11 @@ deploy:
       <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="/images/avatar.gif"
-               alt="王明海" />
-          <p class="site-author-name" itemprop="name">王明海</p>
+               src="/uploads/avatar.png"
+               alt="疯一样的雨" />
+          <p class="site-author-name" itemprop="name">疯一样的雨</p>
            
-              <p class="site-description motion-element" itemprop="description">博客</p>
+              <p class="site-description motion-element" itemprop="description">茫茫人海中遇见最好的你！</p>
           
         </div>
         <nav class="site-state motion-element">
@@ -1064,6 +1044,15 @@ deploy:
                 </a>
               </span>
             
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/u013564742" target="_blank" title="CSDN">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  CSDN
+                </a>
+              </span>
+            
           
         </div>
 
@@ -1095,11 +1084,11 @@ deploy:
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">王明海</span>
+  <span class="author" itemprop="copyrightHolder">疯一样的雨</span>
 </div>
 
 
